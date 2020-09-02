@@ -14,6 +14,7 @@ Web application for sharing recipes. Users, once registered, can view and submit
 6. chefs can comment on reviews
 7. chefs names can be clicked to see all their submissions
 8. keyword search of recipes
+9. add list of likes
 
 ---
 
