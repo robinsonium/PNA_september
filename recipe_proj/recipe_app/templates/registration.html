@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="wrapper">
+<span>
+        <h1>Welcome to recipeSwap.com!</h1>
+
+        <a class="right_corner" href="/login">Already have an account? Login</a>
+    </span>
+        <form action="register" method="POST">
+            {% csrf_token %}
+            <div class="block">
+            <label>First name</label>
+            <input type="text" name="first_name">
+        </div>
+        <div class="block">
+            <label>Last name</label>
+            <input type="text" name="last_name">
+        </div>
+        <div class="block">
+            <label>email</label>
+            <input type="text" name="email">
+        </div>
+        <div class="block">
+            <label>username</label>
+            <input type="text" name="username">
+        </div>
+        <div class="block">
+            <label>password</label>
+            <input type="password" name="password">
+        </div>
+        <div class="block">
+            <label>Confirm password</label>
+            <input type="password" name="confirm">
+        </div>
+        <div class="block">
+            <input type="submit" value="submit">
+        </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="topnav">
+            <a href="/">Home</a>
+            <a href="/all_recipes">All recipes</a>
+            <a href="/tags">Tags</a>
+            <a href="/edit_account/{{request.session.userid}}">My account</a>
+        </div>
+        <a href="create">Submit recipe</a>
+        <a href="faves">My faves</a>
+        <h2>{{ recipe.title }}</h2>
+        <div>
+            <h5>Ingredients</h5>
+            {% for ingredient in recipe.ingredient.all %}
+            <p>{{ingredient.content}}</p>
+            {% endfor %}
+        </div>
+        <div>
+            <h5>Steps</h5>
+            {% for step in recipe.step.all %}
+            <p>{{step.content}}</p>
+            {% endfor %}
+        </div>
+        {% if recipe.review.all|length %}
+        <h3>User reviews</h3>
+        <ul>
+            {% for review in recipe.review.all reversed %}
+            <li>{{review.content}} (reviewed by {{review.poster.username}} on {{review.created_at|date:"m/d/Y"}} )</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% if recipe.creator.id != userid %}
+        <a href="../review/{{recipe.id}}">Made it? Leave a review!</a>
+        {% endif %}
+    </div>
+</body>
+
+</html>

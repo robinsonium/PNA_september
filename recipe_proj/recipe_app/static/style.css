@@ -1,0 +1,17 @@
+#wrapper{
+    width: 1000px;
+    margin: 0px auto;
+    padding: 10px;
+}
+
+
+.right_corner{
+    margin-left: 700px;
+    text-align: right;
+}
+
+form label{
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h3>Submit recipe</h3>
+        <form action="create" method="POST">
+            {% csrf_token %}
+            <div class="block">
+                <label>Title</label>
+                <input type="text" name="title" size=80>
+            </div>
+
+            <!-- This block has dynamic form code -->
+            <div class="block" name="ingredients_container" id="ingredients_container">            
+                    <input type="text" name="ingredients[]" size=80 placeholder = "ingredient">
+            </div>
+            <br>
+            <input type="button" value="Add another ingredient" onClick="addIngredient('ingredients_container[]');">
+            <br>
+
+            <!-- <div class="block">
+                <label for="">Steps</label>
+                <input type="text" name="step" size=80>
+            </div> -->
+
+            <div class="block" name="steps_container" id="steps_container">            
+                <input type="text" name="steps[]" size=80 placeholder = "step" size=80>
+        </div>
+        <br>
+        <input type="button" value="Add another step" onClick="addStep('steps_container[]');">
+
+       
+            <div class="block">
+                <label for="">Add tags</label>
+                <input type="text" size=80 name="tags"
+                    placeholder="A list of single word tags, e.g. 'keto', 'gluten-free', 'meditteranean', etc">
+            </div>
+            <h4>placholder for upload photo</h4>
+            <p>
+                <br>
+                <input type="submit" value="submit">
+                <a href="/" style="background-color: red; border-radius: 5px; padding: 2px; color: black;">Cancel</a>
+            </p>
+        </form>
+    </div>
+    
+</body>
+</html>

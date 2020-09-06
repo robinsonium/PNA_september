@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>My account</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="topnav">
+            <a href="/">Home</a>
+            <a href="all_recipes">All recipes</a>
+            <a href="tags">Tags</a>
+            <a href="/edit_account/{{request.session.userid}}">My account</a>
+        </div>
+        <div class="halfcol">
+        <h3>Edit account information</h3>
+        <form action="edit_account/{{request.session.userid}}" method="POST">
+            <div class="block">
+                <label>First name</label>
+                <input type="text" name="first_name" value={{user.first_name}}>
+            </div>
+            <div class="block">
+                <label>Last name</label>
+                <input type="text" name="last_name" value={{user.last_name}}>
+            </div>
+            <div class="block">
+                <label>email</label>
+                <input type="text" name="email" value={{user.email}}>
+            </div>
+            <div class="block">
+                <label>username</label>
+                <input type="text" name="username" value={{user.username}}>
+            </div>
+            <!-- <div class="block">
+                <label>password</label>
+                <input type="password" name="password">
+            </div>
+            <div class="block">
+                <label>Confirm password</label>
+                <input type="password" name="confirm">
+            </div> -->
+            <div class="block">
+                <input type="submit" value="submit">
+                <a href="../" style="background-color: red; border-radius: 5px; padding: 2px;">Cancel</a>
+            </div>
+        </form>
+    </div>
+    <div class="halfcol">
+        <div id="myrecipes">
+            <ul>
+                {% for recipe in user.recipe.all %}
+                <li><a href="/detail/{{recipe.id}}">{{recipe.title}} (added {{recipe.created_at|date:"m/d/Y"}})</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    </div>
+    
+</body>
+</html>

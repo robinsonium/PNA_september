@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Recipe portal</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="topnav">
+            <a href="/">Home</a>
+            <a href="all_recipes">All recipes</a>
+            <a href="tags">Tags</a>
+            <a href="/edit_account/{{request.session.userid}}">My account</a>
+        </div>
+        <a class="right_corner" href="logout">Logout</a>
+        <a href="create">Submit recipe</a>
+        <a href="faves">My faves</a>
+        <h1 class="center">Recipe of the day</h1>
+        <h3><a href="detail/{{recipe.id}}">{{ recipe.title }}</a></h3>
+    </div>
+</body>
+</html>
